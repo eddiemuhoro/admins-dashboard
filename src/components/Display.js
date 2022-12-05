@@ -3,7 +3,7 @@ import axios from 'axios'
 const Display = () => {
     const [users,setUsers]= useState([])
     useEffect(() => {
-        axios.request('http://localhost:5000/users')
+        axios.request('https://expressjs-production-e1ab.up.railway.app/users')
         .then((response) =>{
 
             setUsers(response.data);
@@ -11,6 +11,8 @@ const Display = () => {
             console.log(error);
         })
     })
+
+    
   return (
     <>
     <h1>Contact Details</h1>
@@ -20,7 +22,7 @@ const Display = () => {
                     <h1>{user.name}</h1>
                     <p>{user.email}</p>
                     <p>{user.phone}</p>
-                    
+                    <button className='delete-btn'>remove</button>
                 </div>
             ))}
         </div>
