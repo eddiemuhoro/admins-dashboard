@@ -3,7 +3,7 @@ import axios from 'axios'
 const Display = () => {
     const [users,setUsers]= useState([])
     useEffect(() => {
-        axios.request('https://expressjs-production-e1ab.up.railway.app/users')
+        axios.request('https://jobsy.up.railway.app/job')
         .then((response) =>{
 
             setUsers(response.data);
@@ -19,9 +19,12 @@ const Display = () => {
         <div className='contact-wrapper'>
             {users.map(user => (
                 <div className='contact-item'>
-                    <h1>{user.name}</h1>
-                    <p>{user.email}</p>
-                    <p>{user.phone}</p>
+                    <h1>{user.title}</h1>
+                    <p>{user.description}</p>
+                    <p>{user.employer}</p>
+                    <p>{user.location}</p>
+                    <p>{user.salary}</p>
+                    <img src={user.imageurl} alt={user.title}/>
                     <button className='delete-btn'>remove</button>
                 </div>
             ))}
